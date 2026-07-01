@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    /* internal css */
+    h2{
+        background-color: lightblue;
+    }
+    body{
+        background-color: pink;
+    }
+</style>
+<body>
+ 
+    <!-- priority inline > internal > external -->
+
+    <!-- what is the difference between inline and block element? 
+     inline element are those that do not start on a new line and only take
+      up as much space as necessary. block element are those that start on a
+       new line and take up the full width available-->
+
+        <!-- h1 is style by external css -->
+    <h1>This is a external css</h1>   
+    <h2>This is a internal css</h2>
+
+    <!-- h3 is style by inline css --> 
+    <h3 style="background-color: lightgreen;">This is a inline css</h3>
+    <span style="background-color: yellow;">span is an inline element</span>
+    <p style="background-color: lightgray;"> this is inline css but due to
+         by adding !important property in external exertnal css works </p>
+</body>
+</html>

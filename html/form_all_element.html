@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All HTML Form Elements</title>
+</head>
+<body>
+
+    <!-- ===================================================== -->
+    <!-- FORM TAG -->
+    <!-- Used to create a form for user input -->
+    <!-- ===================================================== -->
+
+    <form action="#" method="post">
+
+        <!-- ===================================================== -->
+        <!-- LABEL -->
+        <!-- Used to give title/label to input fields -->
+        <!-- ===================================================== -->
+
+        <label>Enter Name:</label>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE TEXT -->
+        <!-- Used to take normal text input -->
+        <!-- ===================================================== -->
+
+        <input type="text" placeholder="Enter your name">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE PASSWORD -->
+        <!-- Used to take hidden password -->
+        <!-- ===================================================== -->
+
+        <label>Password:</label>
+        <input type="password" placeholder="Enter password">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE EMAIL -->
+        <!-- Used to take email -->
+        <!-- ===================================================== -->
+
+        <label>Email:</label>
+        <input type="email" placeholder="Enter email">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE NUMBER -->
+        <!-- Used to take numeric values -->
+        <!-- ===================================================== -->
+
+        <label>Age:</label>
+        <input type="number" min="1" max="100">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE TEL -->
+        <!-- Used to take phone number -->
+        <!-- ===================================================== -->
+
+        <label>Phone:</label>
+        <input type="tel" placeholder="9876543210">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE URL -->
+        <!-- Used to take website URL -->
+        <!-- ===================================================== -->
+
+        <label>Website:</label>
+        <input type="url" placeholder="https://example.com">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE SEARCH -->
+        <!-- Used for search box -->
+        <!-- ===================================================== -->
+
+        <label>Search:</label>
+        <input type="search" placeholder="Search here">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE DATE -->
+        <!-- Used to select date -->
+        <!-- ===================================================== -->
+
+        <label>Select Date:</label>
+        <input type="date">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE TIME -->
+        <!-- Used to select time -->
+        <!-- ===================================================== -->
+
+        <label>Select Time:</label>
+        <input type="time">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE DATETIME-LOCAL -->
+        <!-- Used to select date and time -->
+        <!-- ===================================================== -->
+
+        <label>Date and Time:</label>
+        <input type="datetime-local">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE MONTH -->
+        <!-- Used to select month -->
+        <!-- ===================================================== -->
+
+        <label>Select Month:</label>
+        <input type="month">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE WEEK -->
+        <!-- Used to select week -->
+        <!-- ===================================================== -->
+
+        <label>Select Week:</label>
+        <input type="week">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE COLOR -->
+        <!-- Used to pick colors -->
+        <!-- ===================================================== -->
+
+        <label>Choose Color:</label>
+        <input type="color">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE RANGE -->
+        <!-- Used to select value using slider -->
+        <!-- ===================================================== -->
+
+        <label>Volume:</label>
+        <input type="range" min="0" max="100">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE FILE -->
+        <!-- Used to upload files -->
+        <!-- ===================================================== -->
+
+        <label>Upload File:</label>
+        <input type="file">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE RADIO -->
+        <!-- Used when only one option is selected -->
+        <!-- ===================================================== -->
+
+        <label>Gender:</label>
+        <input type="radio" name="gender"> Male
+        <input type="radio" name="gender"> Female
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE CHECKBOX -->
+        <!-- Used when multiple options can be selected -->
+        <!-- ===================================================== -->
+
+        <label>Hobbies:</label>
+        <input type="checkbox"> Cricket
+        <input type="checkbox"> Music
+        <input type="checkbox"> Coding
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE HIDDEN -->
+        <!-- Used to store hidden data -->
+        <!-- ===================================================== -->
+
+        <input type="hidden" value="12345">
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE IMAGE -->
+        <!-- Used as image submit button -->
+        <!-- ===================================================== -->
+
+        <label>Image Button:</label>
+        <input 
+            type="image"
+            src="https://via.placeholder.com/100"
+            alt="submit"
+            width="100">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE BUTTON -->
+        <!-- Used to create normal button -->
+        <!-- ===================================================== -->
+
+        <input type="button" value="Normal Button">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE SUBMIT -->
+        <!-- Used to submit form -->
+        <!-- ===================================================== -->
+
+        <input type="submit" value="Submit Form">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- INPUT TYPE RESET -->
+        <!-- Used to reset form values -->
+        <!-- ===================================================== -->
+
+        <input type="reset" value="Reset Form">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- TEXTAREA -->
+        <!-- Used for multi-line text -->
+        <!-- ===================================================== -->
+
+        <label>Message:</label><br>
+        <textarea rows="5" cols="40" placeholder="Enter message"></textarea>
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- SELECT -->
+        <!-- Used to create dropdown -->
+        <!-- ===================================================== -->
+
+        <label>Select Country:</label>
+
+        <select>
+
+            <!-- ===================================================== -->
+            <!-- OPTION -->
+            <!-- Used inside select -->
+            <!-- ===================================================== -->
+
+            <option>India</option>
+            <option>USA</option>
+            <option>Canada</option>
+
+        </select>
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- OPTGROUP -->
+        <!-- Used to group dropdown options -->
+        <!-- ===================================================== -->
+
+        <label>Select City:</label>
+
+        <select>
+
+            <optgroup label="India">
+                <option>Delhi</option>
+                <option>Mumbai</option>
+            </optgroup>
+
+            <optgroup label="USA">
+                <option>New York</option>
+                <option>Chicago</option>
+            </optgroup>
+
+        </select>
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- BUTTON -->
+        <!-- Used to create clickable button -->
+        <!-- ===================================================== -->
+
+        <button type="button">Click Me</button>
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- FIELDSET -->
+        <!-- Used to group related fields -->
+        <!-- ===================================================== -->
+
+        <fieldset>
+
+            <!-- ===================================================== -->
+            <!-- LEGEND -->
+            <!-- Used as title for fieldset -->
+            <!-- ===================================================== -->
+
+            <legend>Personal Information</legend>
+
+            <label>First Name:</label>
+            <input type="text">
+            <br><br>
+
+            <label>Last Name:</label>
+            <input type="text">
+
+        </fieldset>
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- DATALIST -->
+        <!-- Used to provide suggestions -->
+        <!-- ===================================================== -->
+
+        <label>Choose Browser:</label>
+
+        <input list="browsers">
+
+        <datalist id="browsers">
+            <option value="Chrome">
+            <option value="Firefox">
+            <option value="Edge">
+            <option value="Safari">
+        </datalist>
+
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- OUTPUT -->
+        <!-- Used to display calculation result -->
+        <!-- ===================================================== -->
+
+        <label>Output:</label>
+        <output>50</output>
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- PROGRESS -->
+        <!-- Used to show progress -->
+        <!-- ===================================================== -->
+
+        <label>Progress:</label>
+        <progress value="70" max="100"></progress>
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- METER -->
+        <!-- Used to show measurement -->
+        <!-- ===================================================== -->
+
+        <label>Disk Usage:</label>
+        <meter value="0.7">70%</meter>
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- DETAILS -->
+        <!-- Used to show expandable content -->
+        <!-- ===================================================== -->
+
+        <details>
+            <summary>More Information</summary>
+            This is hidden content inside details tag.
+        </details>
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- REQUIRED ATTRIBUTE -->
+        <!-- Makes field mandatory -->
+        <!-- ===================================================== -->
+
+        <label>Required Field:</label>
+        <input type="text" required>
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- READONLY ATTRIBUTE -->
+        <!-- User cannot edit value -->
+        <!-- ===================================================== -->
+
+        <label>Readonly:</label>
+        <input type="text" value="Readonly Value" readonly>
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- DISABLED ATTRIBUTE -->
+        <!-- Disables input field -->
+        <!-- ===================================================== -->
+
+        <label>Disabled:</label>
+        <input type="text" disabled>
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- PLACEHOLDER ATTRIBUTE -->
+        <!-- Shows hint inside input -->
+        <!-- ===================================================== -->
+
+        <label>Placeholder:</label>
+        <input type="text" placeholder="Enter text">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- AUTOFOCUS ATTRIBUTE -->
+        <!-- Automatically focuses field -->
+        <!-- ===================================================== -->
+
+        <label>Autofocus:</label>
+        <input type="text" autofocus>
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- MAXLENGTH ATTRIBUTE -->
+        <!-- Sets maximum characters -->
+        <!-- ===================================================== -->
+
+        <label>Max Length:</label>
+        <input type="text" maxlength="10">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- MIN AND MAX ATTRIBUTE -->
+        <!-- Sets minimum and maximum values -->
+        <!-- ===================================================== -->
+
+        <label>Marks:</label>
+        <input type="number" min="0" max="100">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- PATTERN ATTRIBUTE -->
+        <!-- Used for validation -->
+        <!-- ===================================================== -->
+
+        <label>Pattern:</label>
+        <input type="text" pattern="[A-Za-z]{3}">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- STEP ATTRIBUTE -->
+        <!-- Defines interval between values -->
+        <!-- ===================================================== -->
+
+        <label>Step:</label>
+        <input type="number" step="5">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- MULTIPLE ATTRIBUTE -->
+        <!-- Allows multiple file selection -->
+        <!-- ===================================================== -->
+
+        <label>Multiple Files:</label>
+        <input type="file" multiple>
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- AUTOCOMPLETE ATTRIBUTE -->
+        <!-- Enables auto suggestions -->
+        <!-- ===================================================== -->
+
+        <label>Autocomplete:</label>
+        <input type="text" autocomplete="on">
+        <br><br>
+
+        <!-- ===================================================== -->
+        <!-- FORM END -->
+        <!-- ===================================================== -->
+
+    </form>
+
+</body>
+</html>

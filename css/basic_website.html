@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar - Content - Footer Layout</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            min-height:100vh;
+            display:flex;
+            flex-direction:column;
+        }
+        .navbar{
+            height:100px;
+            background-color:grey;
+        }
+
+        #list{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            gap:80px;
+            list-style:none;
+            color:white;
+            height:100%;
+            font-size:20px;
+        }
+        .container{
+            /* flex:1;   */
+            display:flex;
+            justify-content:space-between;
+            padding:20px;
+            gap:20px;
+        }
+
+        .left{
+            width:50%;
+            height:400px;
+            background-color:lightblue;
+            padding:20px;
+        }
+
+        .right{
+            width:50%;
+            height:400px;
+            background-color:lightcoral;
+            padding:20px;
+        }
+        .footer{
+            height:100px;
+            background-color:grey;
+        }
+
+        .footer ul{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            gap:80px;
+            list-style:none;
+            color:white;
+            height:100%;
+            font-size:20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul id="list">
+            <li>Home</li>
+            <li>About</li>
+            <li>Services</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <div class="left">
+            <h2>Left Section</h2>
+            <p>This is the left side content area.</p>
+        </div>
+
+        <div class="right">
+            <h2>Right Section</h2>
+            <p>This is the right side content area.</p>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <ul>
+            <li>Privacy Policy</li>
+            <li>Terms & Conditions</li>
+            <li>Support</li>
+            <li>© 2026 Senthil</li>
+        </ul>
+    </footer>
+
+</body>
+</html>

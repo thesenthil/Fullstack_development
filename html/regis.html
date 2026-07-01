@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+
+<body>
+
+    <h1 align="center">Registration Form</h1>
+
+    <form action="submit.php" method="post">
+
+        <fieldset>
+
+            <legend>Personal Information</legend>
+
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="fname" placeholder="Enter first name" required><br><br>
+
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" name="lname" placeholder="Enter last name"> <br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone"><br><br>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob"> <br><br>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="1" max="100"><br><br>
+
+            <label>Gender:</label>
+
+            <input type="radio" id="male" name="gender" value="Male">
+            <label for="male">Male</label>
+
+            <input type="radio" id="female"name="gender" value="Female">
+            <label for="female">Female</label>
+
+            <input type="radio" id="other"name="gender" value="Other">
+            <label for="other">Other</label>
+
+        </fieldset>  <br>
+
+        <div style="background-color: lightblue; padding: 10px;">
+            <fieldset>
+                <legend>Education Details</legend>
+
+                <label for="course">Select Course:</label>
+
+                <select id="course" name="course">
+                    <option value=""> --Select Course-- </option>
+                    <option value="BTech">B.Tech</option>
+                    <option value="BCA">BCA</option>
+                    <option value="MCA">MCA</option>
+                    <option value="MBA">MBA</option>
+                </select><br><br>
+
+                <label for="branch">Select Branch:</label>
+
+                <select id="branch" name="branch">
+
+                    <optgroup label="Engineering">
+                        <option>CSE</option>
+                        <option>IT</option>
+                        <option>ECE</option>
+                    </optgroup>
+
+                    <optgroup label="Management">
+                        <option>Finance</option>
+                        <option>Marketing</option>
+                    </optgroup>
+
+                </select> <br><br>
+
+                <label>Skills:</label>
+
+                <input type="checkbox"   id="html"   name="skills"   value="HTML">
+                <label for="html">HTML</label>
+
+                <input type="checkbox"    id="css"    name="skills"    value="CSS">
+                <label for="css">CSS</label>
+
+                <input type="checkbox"   id="js"   name="skills"   value="JavaScript">
+                <label for="js">JavaScript</label>
+
+                <input type="checkbox"    id="java"    name="skills"    value="Java">
+                <label for="java">Java</label>
+
+            </fieldset>
+
+        </div>
+
+        <br>
+        <fieldset>
+
+            <legend>Additional Information</legend>
+
+            <label for="address">Address:</label>
+            <br>
+
+            <textarea id="address" name="address"rows="4"cols="30"></textarea> <br><br>
+
+            <label for="color">Favorite Color:</label>
+            <input type="color" id="color" name="color"><br><br>
+
+            <label for="resume">Upload Resume:</label>
+            <input type="file" id="resume" name="resume"><br><br>
+
+            <label for="website">Website:</label>
+            <input type="url" id="website" name="website"><br><br>
+
+            <label for="search">Search:</label>
+            <input type="search" id="search" name="search"><br><br>
+
+            <label for="time">Preferred Time:</label>
+            <input type="time" id="time" name="time"><br><br>
+            <label for="range">Satisfaction Level:</label>
+            <input type="range"id="range"name="range"min="0"max="10">
+        </fieldset><br>
+
+        <fieldset>
+
+            <legend>Submit Form</legend>
+
+            <input type="submit" value="Register">
+
+            <input type="reset" value="Reset">
+
+            <button type="button">
+                Normal Button
+            </button>
+
+        </fieldset>
+<details>
+    <summary>Additional Options</summary>
+    <p>Some additional information can be shown here.</p>
+</details>
+    </form>
+
+</body>
+
+</html>

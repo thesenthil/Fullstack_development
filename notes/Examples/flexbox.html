@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox Playground</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; padding: 24px; background: #f8fafc; }
+    h1 { margin-bottom: 8px; }
+    h2 { margin: 32px 0 8px; font-size: 1.1rem; color: #2563eb; }
+    .demo {
+      display: flex;
+      gap: 12px;
+      background: white;
+      border: 2px dashed #cbd5e1;
+      padding: 16px;
+      margin-bottom: 8px;
+      min-height: 100px;
+    }
+    .box {
+      background: #2563eb;
+      color: white;
+      padding: 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    code { background: #eef2ff; padding: 2px 6px; border-radius: 4px; }
+
+    /* 1. Basic row */
+    .demo-row { flex-direction: row; }
+
+    /* 2. Column */
+    .demo-column { flex-direction: column; }
+
+    /* 3. Justify content */
+    .demo-justify { justify-content: space-between; }
+
+    /* 4. Align items center */
+    .demo-align { align-items: center; min-height: 150px; }
+
+    /* 5. Centered (both axes) */
+    .demo-center { justify-content: center; align-items: center; min-height: 150px; }
+
+    /* 6. Flex grow */
+    .demo-grow .box1 { flex-grow: 1; }
+    .demo-grow .box2 { flex-grow: 2; }
+    .demo-grow .box3 { flex-grow: 1; }
+
+    /* 7. Wrap */
+    .demo-wrap { flex-wrap: wrap; }
+    .demo-wrap .box { min-width: 150px; }
+  </style>
+</head>
+<body>
+
+  <h1>Flexbox Playground</h1>
+  <p>Each section demonstrates one flexbox concept. View source / edit live to experiment.</p>
+
+  <h2>1. <code>flex-direction: row</code> (default)</h2>
+  <div class="demo demo-row">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+  </div>
+
+  <h2>2. <code>flex-direction: column</code></h2>
+  <div class="demo demo-column">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+  </div>
+
+  <h2>3. <code>justify-content: space-between</code></h2>
+  <div class="demo demo-justify">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+  </div>
+
+  <h2>4. <code>align-items: center</code> (cross-axis)</h2>
+  <div class="demo demo-align">
+    <div class="box" style="padding: 8px;">Short</div>
+    <div class="box" style="padding: 30px;">Tall</div>
+  </div>
+
+  <h2>5. Perfect centering (<code>justify-content + align-items: center</code>)</h2>
+  <div class="demo demo-center">
+    <div class="box">Centered</div>
+  </div>
+
+  <h2>6. <code>flex-grow</code> (box2 grows twice as much)</h2>
+  <div class="demo demo-grow">
+    <div class="box box1">grow:1</div>
+    <div class="box box2">grow:2</div>
+    <div class="box box3">grow:1</div>
+  </div>
+
+  <h2>7. <code>flex-wrap: wrap</code> (resize window to see effect)</h2>
+  <div class="demo demo-wrap">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+  </div>
+
+</body>
+</html>

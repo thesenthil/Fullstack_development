@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div style="background-color: aqua; height: 200px; width: 200px;">
+        this is div1
+    </div>
+    <div style="background-color: blue; height:200px; width: 200px;">
+        this is div2    
+    </div>
+    <div style="background-color: green; height: 200px; width: 200px;">
+        this is div3
+    </div>
+    <div style="background-color: yellow; height: 200px; width: 200px;">
+        this is div4    
+    </div> -->
+    <style>
+        /* class id selector  */
+        #parent{
+            background-color: blue;
+            height: 300px;
+            width: 300px;
+            padding: 50px;
+        }
+        #child{
+            background-color:aqua;
+            height: 200px;
+            width: 200px;
+                margin: 5px;
+                /*margin= Space outside an element's border used to separate it from other elements  */
+                padding: 35px;
+                /* padding= Space between an element's content and its border.    */
+                border: 2px solid black;
+                border-radius: 50%;
+                /* border-radius= property is used to create rounded corners for elements. */   
+        }
+        /* class selector */
+        .grandchild{
+            background-color: yellow;
+            height: 100px;
+            width: 100px;
+            margin: 25px;
+            padding: 25px;
+            display: flex;
+           justify-content: center;
+           align-items: center;
+        }
+        #greatgrandchild{
+            background-color: green;
+            height: 50px;
+            width: 50px;
+            margin: 12.5px;
+            padding: 12.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+    <div id="parent">
+        this is parent div
+    <div id="child">
+        this is child div
+        <div class="grandchild">
+            3rd  
+            <div id="greatgrandchild">
+                4th  
+                </div>
+    </div>
+    </div>
+    </div>
+</body>
+</html>

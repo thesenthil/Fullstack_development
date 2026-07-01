@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- payload=payload is the data sent from the client to the server -->
+    <!-- form=used to collect user input -->
+     <!-- what is label=label is used to define a label for an input element -->
+    <h1>Form in HTML</h1>
+    <div style="background-color: lightblue; padding: 10px;">
+        
+    <form action="submit.php" method="post">
+        <fieldset>
+            <legend>Personal Information</legend>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="enter your name" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <label for="phone_no">Phone No:</label>
+        <input type="number" name="phone_no"><br><br>
+        <label for="alt_phone_no">Alternate Phone No:</label>
+        <input type="tel" id="alt_phone_no" name="alt_phone_no"><br><br>
+        <label for="age">Age:</label>
+        <input type="number" name="age" minlength="1" maxlength="3"><br><br>
+        <label for="gender">Gender:</label>
+        <input type="radio" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" name="gender" value="female">
+        <label for="female">Female</label>
+        <input type="radio" name="gender" value="other">
+        <label for="other">Other</label><br><br>
+        <label for="death_cert">Upload Death Certificate:</label>
+        <input type="file" accept=".pdf,.jpg,.png"><br><br>
+        <label for="skills">Skills:</label><br><br>
+        <input type="checkbox">python<br><br>
+        <input type="checkbox">java<br><br>
+        <input type="checkbox">c++<br><br>
+        <input type="checkbox">javascript<br><br>
+        <input type="submit" value="Submit">
+        <button type="reset">Reset</button>
+        </fieldset>
+    </form>
+    </div>
+</body>
+</html>

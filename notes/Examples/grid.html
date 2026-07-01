@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid Playground</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; padding: 24px; background: #f8fafc; }
+    h1 { margin-bottom: 8px; }
+    h2 { margin: 32px 0 8px; font-size: 1.1rem; color: #2563eb; }
+    .demo {
+      display: grid;
+      gap: 12px;
+      background: white;
+      border: 2px dashed #cbd5e1;
+      padding: 16px;
+      margin-bottom: 8px;
+    }
+    .box {
+      background: #2563eb;
+      color: white;
+      padding: 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    code { background: #eef2ff; padding: 2px 6px; border-radius: 4px; }
+
+    /* 1. Equal columns */
+    .demo-equal { grid-template-columns: repeat(3, 1fr); }
+
+    /* 2. Mixed fr units */
+    .demo-fr { grid-template-columns: 2fr 1fr 1fr; }
+
+    /* 3. Responsive auto-fit */
+    .demo-autofit { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+
+    /* 4. Spanning */
+    .demo-span { grid-template-columns: repeat(4, 1fr); }
+    .demo-span .span-2 { grid-column: span 2; background: #16a34a; }
+
+    /* 5. Named areas — page layout */
+    .demo-areas {
+      grid-template-columns: 150px 1fr;
+      grid-template-rows: 60px 1fr 50px;
+      grid-template-areas:
+        "sidebar header"
+        "sidebar main"
+        "sidebar footer";
+      min-height: 300px;
+    }
+    .area-sidebar { grid-area: sidebar; background: #64748b; }
+    .area-header  { grid-area: header; background: #2563eb; }
+    .area-main    { grid-area: main; background: #0ea5e9; }
+    .area-footer  { grid-area: footer; background: #94a3b8; }
+  </style>
+</head>
+<body>
+
+  <h1>CSS Grid Playground</h1>
+  <p>Each section demonstrates one grid concept. View source / edit live to experiment.</p>
+
+  <h2>1. Equal columns — <code>repeat(3, 1fr)</code></h2>
+  <div class="demo demo-equal">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+  </div>
+
+  <h2>2. Mixed widths — <code>2fr 1fr 1fr</code></h2>
+  <div class="demo demo-fr">
+    <div class="box">2fr</div>
+    <div class="box">1fr</div>
+    <div class="box">1fr</div>
+  </div>
+
+  <h2>3. Responsive grid — <code>repeat(auto-fit, minmax(150px, 1fr))</code></h2>
+  <div class="demo demo-autofit">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+  </div>
+
+  <h2>4. Spanning columns — <code>grid-column: span 2</code></h2>
+  <div class="demo demo-span">
+    <div class="box span-2">spans 2</div>
+    <div class="box">1</div>
+    <div class="box">1</div>
+  </div>
+
+  <h2>5. Named grid areas (classic page layout)</h2>
+  <div class="demo demo-areas">
+    <div class="box area-sidebar">Sidebar</div>
+    <div class="box area-header">Header</div>
+    <div class="box area-main">Main</div>
+    <div class="box area-footer">Footer</div>
+  </div>
+
+</body>
+</html>

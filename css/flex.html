@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .navbar {
+            height: 100px;
+            background-color: grey;
+
+            /* justify-content: center is used Aligns items horizontally (default flex-direction: row) */
+            /* align-items: center is used to Align items vertically (default flex-direction: row) */
+        }
+        #list{
+            display: flex;
+            color: white;
+            list-style: none;
+            justify-content: center;
+            align-items: center;
+            gap: 80px;
+            /* padding: 30px; */
+        }
+        
+            li{
+                margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul id="list">
+            <li>home</li> 
+            <li>about</li>
+            <li>contact</li>
+            <li>service</li>  
+        </ul>
+    </nav>
+</body>
+</html>

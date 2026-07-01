@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Layout Demo</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; color: #1e293b; }
+
+    /* Mobile-first base styles */
+    .navbar {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #1e293b;
+      color: white;
+      padding: 16px;
+    }
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      list-style: none;
+    }
+    .nav-links a { color: white; text-decoration: none; }
+
+    .hero {
+      padding: 32px 16px;
+      text-align: center;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+    }
+    .hero h1 { font-size: clamp(1.5rem, 5vw, 2.5rem); margin-bottom: 12px; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr; /* mobile: 1 column */
+      gap: 16px;
+      padding: 24px 16px;
+    }
+    .card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .card h3 { color: #2563eb; margin-bottom: 8px; }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f1f5f9;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    /* Tablet and up */
+    @media (min-width: 768px) {
+      .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .nav-links {
+        flex-direction: row;
+        gap: 20px;
+      }
+      .cards {
+        grid-template-columns: repeat(2, 1fr); /* tablet: 2 columns */
+      }
+    }
+
+    /* Desktop and up */
+    @media (min-width: 1024px) {
+      .cards {
+        grid-template-columns: repeat(3, 1fr); /* desktop: 3 columns */
+      }
+      .hero { padding: 64px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <strong>MySite</strong>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Features</a></li>
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <h1>Resize your browser window</h1>
+    <p>This layout switches from 1 → 2 → 3 columns as the screen grows.</p>
+  </section>
+
+  <section class="cards">
+    <div class="card">
+      <h3>Mobile First</h3>
+      <p>Base styles target small screens, then layer up with min-width media queries.</p>
+    </div>
+    <div class="card">
+      <h3>Flexible Nav</h3>
+      <p>The navbar stacks vertically on mobile, becomes a horizontal row from 768px up.</p>
+    </div>
+    <div class="card">
+      <h3>Grid Reflow</h3>
+      <p>Card grid moves from 1 column (mobile) → 2 (tablet) → 3 (desktop).</p>
+    </div>
+    <div class="card">
+      <h3>Fluid Type</h3>
+      <p>Heading uses <code>clamp()</code> for smooth font scaling with no extra media query.</p>
+    </div>
+    <div class="card">
+      <h3>No Fixed Widths</h3>
+      <p>Everything uses relative units and percentages, never hardcoded pixel widths.</p>
+    </div>
+    <div class="card">
+      <h3>Try It</h3>
+      <p>Open browser DevTools (F12) → Toggle device toolbar to test breakpoints.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Responsive Demo — resize the window to see it in action.</p>
+  </footer>
+
+</body>
+</html>
