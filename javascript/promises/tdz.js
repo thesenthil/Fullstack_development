@@ -5,8 +5,17 @@ console.log(a); // ReferenceError: Cannot access 'a' before initialization
 let a = 5;
 
 */
-
+/*
 sum(2,4)
+ function sum(a,b){
+    console.log(a+b);
+ }
+    */
+
+ console.log(a);
+ var a=10;
+
+ sum(2,6)
  function sum(a,b){
     console.log(a+b);
  }
