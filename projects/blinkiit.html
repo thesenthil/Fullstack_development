@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blinkit Clone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        footer {
+    background-color: #f1f1f1;
+    padding: 30px 20px;
+}
+
+/* Footer Links Section */
+.footer-links {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 30px 0;
+    gap: 30px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.column a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Bottom Footer */
+.footer-bottom {
+    padding: 30px 20px;
+    background-color: #e8e8e8;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.footer-options button {
+    padding: 8px 15px;
+    margin-left: 10px;
+}
+
+/* Services Section */
+.footer-services {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.service {
+    width: 150px;
+}
+
+/* Terms Section */
+.footer-last {
+    text-align: center;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 10px;
+}
+
+.links a {
+    text-decoration: none;
+    color: black;
+}
+
+.terms {
+    display: flex;
+    justify-content: center;
+}
+
+.back-top {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.back-top a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+body > p {
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+}
+.food-section{
+    padding:40px 20px;
+}
+
+.food-section h2{
+    margin-bottom:20px;
+}
+
+.food-container{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.food-card{
+    width:220px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:15px;
+    text-align:center;
+    background:white;
+    transition:0.3s;
+}
+
+.food-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+.food-card img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+.food-card h4{
+    margin:10px 0;
+}
+
+.food-card p{
+    font-weight:bold;
+    color:green;
+}
+
+.food-card button{
+    margin-top:10px;
+    padding:8px 15px;
+    background:#0c831f;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+        .navbar {
+            height: 100px;
+            background-color: grey;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            color: white;
+            padding: 0 20px;
+        }
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+        }
+        .search-box input {
+            padding: 8px;
+            width: 250px;
+        }
+        .search-btn {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links div {
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+        .terms{
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            Blink<span style="color: yellow;">it</span>
+        </div>
+        <div class="location">
+            Delivering in 8 minutes <br>
+            <b>GMS road dehradun</b>
+        </div>
+        <div class="search-box">
+            <select>
+                <option>All</option>
+            </select>
+            <input type="text" placeholder="search for products, brands and more">  
+            <button class="search-btn">🔎</button>
+        </div>
+        <div class="nav-links">
+            <div>Login</div>
+            <div>🛒 My Cart</div>
+        </div>
+    </div>
+    <section class="food-section">
+    <h2>Popular Food Items</h2>
+
+    <div class="food-container">
+
+        <div class="food-card">
+            <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/cf139842-03a4-4da6-843f-4e89a167f35e.png" alt="Apple">
+            <h4>Fresh Apples</h4>
+            <p>₹120 / kg</p>
+            <button>Add to Cart</button>
+        </div>
+
+        <div class="food-card">
+            <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/72affebb-0553-40cb-a809-465c8d1ad51d.png" alt="Banana">
+            <h4>Bananas</h4>
+            <p>₹60 / dozen</p>
+            <button>Add to Cart</button>
+        </div>
+
+        <div class="food-card">
+            <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/74b0d3be-111c-4342-ac27-43fd7bb54793.png" alt="Milk">
+            <h4>Amul Milk</h4>
+            <p>₹32</p>
+            <button>Add to Cart</button>
+        </div>
+
+        <div class="food-card">
+            <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/rc-upload-1769762440999-311.png" alt="Bread">
+            <h4>Brown Bread</h4>
+            <p>₹45</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="food-card">
+            <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/rc-upload-1771817802649-80.png" alt="eggs">
+            <h4>Eggoz Every Day White Protein</h4>
+            <p>₹60</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="food-card">
+            <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/3af56c86-9a93-4d0c-a8d5-cf38493e4120.png" alt="amul masti">
+            <h4>Amul masti</h4>
+            <p>₹30</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="food-card">
+            <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/rc-upload-1781155438653-138.png" alt="Butter">
+            <h4>Butter</h4>
+            <p>₹25</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="food-card">
+            <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/f1d68b93-ad41-44e3-b849-6bbb6dcc3e36.png" alt="cream">
+            <h4>amul cream</h4>
+            <p>₹70</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="food-card">
+            <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/rc-upload-1779095383481-310.png" alt="peanut butter">
+            <h4>Peanut Butter</h4>
+            <p>₹45</p>
+            <button>Add to Cart</button>
+        </div>
+        <div class="food-card">
+            <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/85f8e546-0b4e-4239-8007-f8a0db4a44cc.png" alt="honey">
+            <h4>Honey</h4>
+            <p>₹60</p>
+            <button>Add to Cart</button>
+        </div>
+
+
+    </div>
+</section>
+    <footer>
+    <div class="back-top">
+        <a href="#">Back to top</a>
+    </div>
+
+    <div class="footer-links">
+        <div class="column">
+            <h3>About Blinkit</h3>
+            <a href="#">Company</a>
+            <a href="#">Careers</a>
+            <a href="#">Blog</a>
+            <a href="#">Press</a>
+        </div>
+
+        <div class="column">
+            <h3>For Customers</h3>
+            <a href="#">Help Center</a>
+            <a href="#">Track Order</a>
+            <a href="#">Returns & Refunds</a>
+            <a href="#">FAQs</a>
+        </div>
+
+        <div class="column">
+            <h3>Partner With Us</h3>
+            <a href="#">Sell on Blinkit</a>
+            <a href="#">Become a Delivery Partner</a>
+            <a href="#">Business Solutions</a>
+        </div>
+
+        <div class="column">
+            <h3>Connect With Us</h3>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+            <a href="#">LinkedIn</a>
+        </div>
+    </div>
+</footer>
+
+<footer class="footer-bottom">
+    <div class="footer-top">
+        <div class="logo">Blinkit</div>
+
+        <div class="footer-options">
+            <button>🌐 English</button>
+            <button>India</button>
+        </div>
+    </div>
+
+    <div class="footer-services">
+        <div class="service">
+            <h4>Groceries</h4>
+            <p>Fresh fruits,<br>vegetables & more</p>
+        </div>
+
+        <div class="service">
+            <h4>Dairy Products</h4>
+            <p>Milk, butter,<br>cheese & curd</p>
+        </div>
+
+        <div class="service">
+            <h4>Snacks & Drinks</h4>
+            <p>Chips, biscuits,<br>cold drinks</p>
+        </div>
+
+        <div class="service">
+            <h4>Personal Care</h4>
+            <p>Beauty & hygiene<br>products</p>
+        </div>
+
+        <div class="service">
+            <h4>Household Items</h4>
+            <p>Cleaning & home<br>essentials</p>
+        </div>
+
+        <div class="service">
+            <h4>Pet Care</h4>
+            <p>Food & accessories<br>for pets</p>
+        </div>
+    </div>
+   <div class="terms">
+    <div class="footer-last">
+        <div class="links">
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Contact Us</a>
+        </div>
+
+        <p>©️2026 Blinkit. All rights reserved.</p>
+    </div>
+   </div>
+</footer>
+<p>“Blinkit” is owned & managed by "Blink Commerce Private Limited" and is not related, linked or interconnected in whatsoever manner or nature, to “GROFFR.COM” which is a real estate services business operated by “Redstone Consultancy Services Private Limited”.</p>
+</body>
+</html>

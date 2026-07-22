@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260715-05-d05fd84"}');</script><script src="/_sdk/f432b76fb310b513.telemetry_sdk.js" integrity="sha512-9FJQ55EKmmqhyyik8BhrMVfm0+iYYfb8uOlRsjtkxJMEI97qOVEI4PnHohDjQAtvAep0IOEpdQ64eki0sz62ug=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bella Cucina Menu</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Maragsa&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --lime: #ff943e;
+      --lime-hover: #ff6105;
+      --ink: #1A1A2E;
+      --stone: #4A4A5A;
+      --mist: #F7F6F3;
+      --coral: #E8735A;
+      --coral-light: #FFF0ED;
+      --sage: #7BA68A;
+      --sage-light: #EDF5EF;
+      --plum: #9B7EC8;
+      --plum-light: #F3EEFB;
+    }
+    body { font-family: 'DM Sans', sans-serif; }
+    .font-display { font-family: 'Playfair Display', Georgia, serif; }
+
+    #submit-order-btn {
+      background-color: #ff943e !important;
+      color: #000 !important;
+      border: 2px solid #000 !important;
+    }
+
+    .category-tab {
+      transition: all 0.3s ease;
+      border: 2px solid #000;
+      background: transparent;
+      color: #000;
+    }
+    .category-tab.active {
+      background: var(--lime);
+      color: #000;
+      border-color: #000;
+    }
+    .category-tab:not(.active):hover {
+      background: rgba(255,148,62,0.3);
+    }
+
+    .menu-card {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      border-radius: 0;
+      min-width: 0;
+      width: 100%;
+    }
+    .menu-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px -8px rgba(0,0,0,0.12);
+    }
+
+    .modal-overlay {
+      background: rgba(26,26,46,0.5);
+      backdrop-filter: blur(4px);
+      animation: fadeIn 0.2s ease;
+    }
+    .modal-content { animation: slideUp 0.3s cubic-bezier(0.4,0,0.2,1); }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    @keyframes slideUp { from{opacity:0;transform:translate(-50%,-50%) translateY(20px)} to{opacity:1;transform:translate(-50%,-50%) translateY(0)} }
+    @keyframes cardIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .card-animate { animation: cardIn 0.35s ease forwards; }
+    .order-item-enter { animation: cardIn 0.3s ease forwards; }
+
+    .qty-btn {
+      width:28px;height:28px;display:flex;align-items:center;justify-content:center;
+      border-radius:50%;font-weight:700;font-size:14px;transition:all 0.15s ease;
+      cursor:pointer;border:1.5px solid #d1d5db;background:#fff;color:var(--stone);
+    }
+    .qty-btn:hover { background:var(--ink);color:#fff;border-color:var(--ink); }
+
+    .add-to-order-btn { transition: all 0.2s ease; }
+    .add-to-order-btn:hover { background-color: #ff6105 !important; }
+
+    @keyframes btnPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(0.95); }
+      100% { transform: scale(1); }
+    }
+    .btn-click { animation: btnPop 0.3s ease-out; }
+
+    .scrollbar-thin::-webkit-scrollbar { width:5px; }
+    .scrollbar-thin::-webkit-scrollbar-track { background:transparent; }
+    .scrollbar-thin::-webkit-scrollbar-thumb { background:#d1d5db;border-radius:10px; }
+
+    @media (max-width: 1023px) {
+      #order-panel-fixed .canva-panel {
+        height: 100px !important;
+      }
+      #order-panel-fixed {
+        max-height: 100px;
+      }
+    }
+
+    #order-panel-fixed {
+      position:fixed;bottom:0;left:0;right:0;z-index:40;
+      background:#fff;border-top:2px solid #000;color:#000;
+      transition:max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+      max-height:200px;overflow:hidden;
+    }
+    #order-panel-fixed.panel-open { max-height: calc(100 * min(var(--vh, 1vh), 1vh) - 20px) !important; }
+
+    @media (min-width: 1024px) {
+      body {
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        grid-template-rows: auto 1fr;
+        min-height: 100vh;
+      }
+      header[data-template-id="header-section"] {
+        grid-column: 1 / -1;
+      }
+      .main-content-wrapper {
+        grid-column: 1;
+        grid-row: 2;
+        min-width: 0;
+        overflow: hidden;
+        max-width: 100% !important;
+        width: 100%;
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
+      #order-panel-wrapper {
+        grid-column: 2;
+        grid-row: 2;
+        padding-right: 30px;
+        padding-bottom: 30px;
+        margin-top: 30px;
+      }
+      #order-panel-fixed {
+        position: sticky !important;
+        top: 0;
+        height: 100%;
+        max-height: none !important;
+        border-left: 2px solid #000;
+        border-top: 2px solid #000;
+        border-bottom: 2px solid #000;
+        border-right: 2px solid #000;
+        overflow-y: hidden !important;
+        display: flex;
+        flex-direction: column;
+      }
+      #order-panel-fixed.panel-open {
+        max-height: none !important;
+      }
+      #panel-toggle-btn {
+        display: none !important;
+      }
+      #order-panel-fixed .canva-panel {
+        height: 80px !important;
+      }
+      #order-items-container {
+        flex: 1;
+        overflow-y: auto;
+        min-height: 0;
+      }
+      #menu-grid {
+        grid-template-columns: repeat(3, 1fr);
+        width: 100%;
+        min-width: 0;
+      }
+    }
+  </style>
+  <script src="/_sdk/e3937a0574eb2d69.data_sdk.js" integrity="sha512-xbp/ACqEQy1aDxYMtXTrR3y5MUbzxuggRR/9sD48Gl4VhLMMCiAHsxMaFV6DTdeBpR6ymF+t2zhPKYkWM3+Jfw=="></script>
+  <script src="/_sdk/9432170dbd2ae0df.resizing_sdk.js" type="text/javascript" integrity="sha512-FeT+58sb1f9ejWPWFjCbJvTT+SDwGV+ngrHUnlO7TWEOoqwOLj6p256kO3vOL7DIWl1cIgrobiof8v2bOigwPg=="></script>
+ </head>
+ <body data-template-id="__page-root" class="min-h-screen w-full" style="background: rgb(247, 246, 243);">
+  <header data-template-id="header-section" class="canva-header w-full relative overflow-hidden" style="min-height: 75vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgb(26, 26, 46), rgb(45, 45, 68));">
+   <img data-template-id="hero-image" loading="lazy" class="canva-image absolute inset-0 w-full h-full object-cover" src="canva://MAFbEa65dRo/1" alt="High-Flash Restaurant Dining Person Having Fish Dish">
+   <div class="absolute inset-0 bg-gradient-to-r from-[rgba(26,26,46,0.14)] to-[rgba(26,26,46,0.14)]"></div>
+   <div class="relative max-w-7xl w-full mx-auto px-4 sm:px-6 flex flex-col items-center text-center">
+    <h1 data-template-id="restaurant-name" class="canva-text font-display" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 218px;">Bar Cucina</h1><button data-template-id="order-now-btn" class="canva-button mt-4" style="background: rgb(255, 148, 62); color: rgb(0, 0, 0); border: 2px solid rgb(0, 0, 0); border-radius: 9999px; padding: 0.625rem 1.75rem; font-weight: 700; font-size: 20px; font-style: normal;" onclick="applyBounce(this); scrollToCategories();">Order Now</button>
+   </div>
+   <div id="name-modal" class="hidden" style="position:fixed;inset:0;z-index:200;">
+    <div class="modal-overlay absolute inset-0" style="background:rgba(26,26,46,0.7);backdrop-filter:blur(6px);" onclick="closeNameModal()"></div>
+    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden" style="position:fixed;bottom:210px;left:50%;transform:translateX(-50%);width:min(calc(100vw - 2rem),24rem);z-index:201;">
+     <div class="p-6">
+      <h3 class="text-2xl font-bold mb-2" style="color:var(--ink);">Your Information</h3>
+      <p class="text-sm mb-4" style="color:var(--stone);">Please enter your name and email to complete your order</p><input id="name-input" type="text" placeholder="Enter your name" class="w-full px-4 py-3 rounded-full border-2 border-black font-medium mb-3" style="color:var(--ink);"><input id="email-input" type="email" placeholder="Enter your email" class="w-full px-4 py-3 rounded-full border-2 border-black font-medium mb-4" style="color:var(--ink);">
+      <div id="name-error" class="hidden text-red-600 text-sm mb-3"></div>
+      <div class="flex gap-3">
+       <button id="name-cancel-btn" data-template-id="name-modal-cancel-btn" onclick="closeNameModal()" class="flex-1 py-3 rounded-full font-semibold border-2 border-gray-200 text-sm transition-colors hover:bg-gray-50 canva-button" style="color: rgb(74, 74, 90); background: rgb(229, 231, 235); font-weight: 600; font-style: normal; font-size: 16px;">Cancel</button> <button id="name-submit-btn" onclick="applyBounce(this); confirmNameAndSubmit()" class="flex-1 py-3 rounded-full font-semibold text-sm transition-colors" style="background-color:#ff943e;color:#000;border:2px solid #000;">Submit</button>
+      </div>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 main-content-wrapper" style="padding-bottom: 30px;">
+   <main>
+    <nav data-template-id="category-tabs" class="canva-tabs flex gap-2 sm:gap-3 mb-6" role="tablist" aria-label="Menu categories" style="background: transparent;">
+     <button class="category-tab active flex-1 py-3 px-4 rounded-full font-semibold text-sm sm:text-base" role="tab" aria-selected="true" data-category="appetizers" onclick="switchCategory('appetizers')">Appetizers</button> <button class="category-tab flex-1 py-3 px-4 rounded-full font-semibold text-sm sm:text-base" role="tab" aria-selected="false" data-category="pastas" onclick="switchCategory('pastas')">Drinks</button> <button class="category-tab flex-1 py-3 px-4 rounded-full font-semibold text-sm sm:text-base" role="tab" aria-selected="false" data-category="desserts" onclick="switchCategory('desserts')">Desserts</button>
+    </nav>
+    <section id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4" aria-label="Menu items" role="tabpanel"></section>
+   </main>
+  </div>
+  <div id="order-panel-wrapper">
+   <aside id="order-panel-fixed">
+    <div data-template-id="order-summary" class="canva-panel" style="height:200px;background:#ff943e;display:flex;align-items:center;justify-content:space-between;padding:0 1.25rem;flex-shrink:0;">
+     <div style="display:flex;align-items:center;">
+      <h2 data-template-id="order-title" class="canva-text font-display" style="color: rgb(0, 0, 0); font-weight: 700; font-style: normal; font-size: 33px;">Your Order</h2><span id="order-count" class="ml-2 text-xs font-bold px-2.5 py-1 rounded-full" style="background:#000;color:#fff;">0</span>
+     </div><button id="panel-toggle-btn" onclick="toggleOrderPanel()" style="display:flex;align-items:center;justify-content:center;padding:0.5rem 1.25rem;border-radius:9999px;background:#000;border:none;cursor:pointer;transition:all 0.3s ease;flex-shrink:0;font-weight:700;font-size:14px;color:#fff;font-family:'DM Sans',sans-serif;" aria-label="Toggle order panel" aria-expanded="false">View Order</button>
+    </div>
+    <div style="display:flex;flex-direction:column;flex:1;min-height:0;">
+     <div class="flex-1 overflow-y-auto scrollbar-thin px-5 pb-3" id="order-items-container" style="color:#000;min-height:0;">
+      <p id="empty-order" class="text-center py-8 text-gray-400 text-sm italic">Your order is empty</p>
+     </div>
+     <div data-template-id="order-footer" class="canva-section border-t border-gray-200 px-5 py-4 flex-shrink-0" style="background:#fff;color:#000;margin-top:auto;">
+      <div class="flex justify-between items-center mb-4">
+       <span data-template-id="subtotal-label" class="canva-text font-semibold" style="color: rgb(0, 0, 0); font-weight: 400; font-style: normal; font-size: 15px;">Subtotal</span> <span id="order-subtotal" class="font-bold text-xl" style="color:#000;">$0.00</span>
+      </div>
+      <div id="submit-error" class="hidden bg-red-50 border border-red-200 text-red-700 text-sm px-3 py-2 rounded-lg mb-3"></div>
+      <div id="submit-success" class="hidden bg-green-50 border border-green-200 text-green-700 text-sm px-3 py-2 rounded-lg mb-3 flex items-center gap-2">
+       <i data-lucide="check-circle" style="width:16px;height:16px;"></i><span>Order submitted! ✓</span>
+      </div><button id="submit-order-btn" data-template-id="submit-order-btn" onclick="applyBounce(this); submitOrder()" class="canva-button w-full py-3 font-semibold text-sm transition-colors" style="border-radius: 9999px; background: rgb(255, 148, 62); color: rgb(0, 0, 0); font-weight: 600; font-style: normal; font-size: 16px;">Submit Order</button>
+     </div>
+    </div>
+   </aside>
+  </div>
+  <template id="menu-card-template">
+   <article class="menu-card card-animate bg-white overflow-hidden flex flex-col" style="border-radius:0;width:100%;">
+    <img loading="lazy" class="canva-image" style="width:100%;height:256px;object-fit:cover;display:block;">
+    <div class="p-5 flex flex-col flex-1" style="background:#ffffff;">
+     <h3 class="font-bold text-lg mb-1" style="color:var(--ink);"></h3>
+     <p class="text-sm leading-relaxed flex-1 mb-4" style="color:var(--stone);"></p>
+     <div class="flex items-center justify-between mt-auto">
+      <span class="font-bold text-xl" style="color:var(--ink);"></span> <button class="add-to-order-btn font-semibold text-sm px-4 py-2 rounded-xl transition-colors" style="background-color:#ff943e;color:#000;border:2px solid #000;"> <i data-lucide="plus" style="width:16px;height:16px;display:inline-block;vertical-align:-3px;margin-right:4px;"></i>Add </button>
+     </div>
+    </div>
+   </article>
+  </template>
+  <div id="customization-modal" class="hidden" style="position:fixed;inset:0;z-index:100;">
+   <div class="modal-overlay absolute inset-0" onclick="closeModal()"></div>
+   <div class="modal-content bg-white rounded-2xl shadow-2xl overflow-hidden" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(calc(100vw - 2rem),28rem);max-height:90vh;overflow-y:auto;z-index:101;">
+    <div class="p-6">
+     <div class="flex justify-between items-start mb-4">
+      <div>
+       <h3 id="modal-item-name" class="text-2xl font-bold" style="color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:700;"></h3>
+       <p id="modal-item-desc" class="text-sm mt-1" style="color:var(--stone);"></p>
+      </div><button onclick="closeModal()" class="p-1 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Close modal"> <i data-lucide="x" style="width:20px;height:20px;color:var(--stone);"></i> </button>
+     </div>
+     <div class="flex items-center mb-5">
+      <span data-template-id="modal-base-price-label" class="canva-text text-sm font-medium" style="color: rgb(74, 74, 90); font-weight: 400; font-style: normal; font-size: 14px;">Base price:</span> <span id="modal-base-price" class="ml-2 font-bold text-lg" style="color:var(--ink);"></span>
+     </div>
+     <div id="addons-section" class="hidden mb-5">
+      <h4 class="font-semibold text-sm uppercase tracking-wider mb-3" style="color:var(--stone);">Add-Ons</h4>
+      <div id="addons-list" class="space-y-2"></div>
+     </div>
+     <div class="flex items-center justify-between mb-6 bg-gray-50 rounded-xl p-4">
+      <span data-template-id="modal-qty-label" class="canva-text font-semibold text-sm" style="color: rgb(74, 74, 90); font-weight: 400; font-style: normal; font-size: 14px;">Quantity</span>
+      <div class="flex items-center gap-3">
+       <button class="qty-btn" onclick="changeModalQty(-1)" aria-label="Decrease quantity">−</button> <span id="modal-qty" class="font-bold text-lg w-8 text-center" style="color:var(--ink);">1</span> <button class="qty-btn" onclick="changeModalQty(1)" aria-label="Increase quantity">+</button>
+      </div>
+     </div>
+     <div class="flex items-center justify-between mb-4">
+      <span data-template-id="modal-total-label" class="canva-text font-semibold" style="color: rgb(74, 74, 90); font-weight: 400; font-style: normal; font-size: 14px;">Item Total:</span> <span id="modal-total" class="font-bold text-2xl" style="color:var(--ink);"></span>
+     </div>
+     <div class="flex gap-3">
+      <button data-template-id="modal-cancel-btn" onclick="closeModal()" class="canva-button flex-1 py-3 rounded-xl font-semibold border-2 border-gray-200 text-sm transition-colors hover:bg-gray-50" style="color: rgb(74, 74, 90); background: rgb(243, 244, 246); font-weight: 600; font-style: normal; font-size: 16px;">Cancel</button> <button data-template-id="modal-add-btn" id="modal-add-btn" onclick="applyBounce(this); confirmAddToOrder()" class="canva-button flex-1 py-3 rounded-xl font-semibold text-sm transition-colors" style="background: rgb(255, 148, 62); color: rgb(0, 0, 0); border: 2px solid rgb(0, 0, 0); font-weight: 600; font-style: normal; font-size: 16px;">Add to Order</button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <template id="order-item-template">
+   <div class="order-item-enter flex items-start gap-3 py-3 border-b border-gray-100 last:border-0">
+    <div class="flex-1 min-w-0">
+     <p class="font-semibold text-sm truncate" style="color:var(--ink);"></p>
+     <div class="flex items-center gap-2 mt-1">
+      <span class="order-item-category text-xs font-semibold px-2.5 py-1 rounded-full"></span>
+      <p class="order-item-addons text-xs" style="color:var(--stone);"></p>
+     </div>
+    </div>
+    <div class="flex items-center gap-2 shrink-0">
+     <button class="qty-btn qty-minus" aria-label="Decrease quantity">−</button> <span class="order-item-qty font-bold text-sm w-5 text-center" style="color:var(--ink);"></span> <button class="qty-btn qty-plus" aria-label="Increase quantity">+</button>
+    </div><span class="order-item-price font-bold text-sm shrink-0 w-16 text-right" style="color:var(--ink);"></span> <button class="remove-btn p-1 rounded-lg hover:bg-red-50 transition-colors shrink-0" aria-label="Remove item"> <i data-lucide="trash-2" style="width:15px;height:15px;color:#EF4444;"></i> </button>
+   </div>
+  </template>
+  <script src="/_sdk/0e8f359d3c23f6d5.editing_sdk.js" integrity="sha512-CBLuYm/olmgyMedTtPRFeqCRZcSWUh6/39ewyXAbnr1dsVHBACzZ59KGJZXvuWNHOHixfWegfuMN9JzmLEDIoA=="></script>
+  <script>
+    const menuData = {
+      appetizers: {
+        color: 'coral',
+        items: [
+          { id:'a1', name:'Heirloom Tomato Ricotta Toast', desc:'Rustic toast with whipped ricotta, ripe tomatoes, and a hint of herbs', price:10 },
+          { id:'a2', name:'Seared Scallops in Shell', desc:'Sweet scallops with a glossy citrus butter sauce and fresh herbs', price:12 },
+          { id:'a3', name:'Prosciutto Crostini Trio', desc:'Crisp seeded toast topped with prosciutto, soft cheese, and delicate sprouts', price:11 },
+          { id:'a4', name:'Classic Mussels in Broth', desc:'Steamed mussels in a rich golden broth served with white wine and warm bread', price:15 },
+          { id:'a5', name:'Seared Salmon with Saffron jus', desc:'Tender salmon with a silky saffron sauce, broccolini, and aromatic herbs', price:14 },
+          { id:'a6', name:'Green Garden Burrata', desc:'Creamy burrata over vibrant herb purée with fresh greens and a light citrus dressing', price:10 }
+        ],
+        addons: []
+      },
+      pastas: {
+        color: 'sage',
+        items: [
+          { id:'p1', name:'Sunset Aperitivo', desc:'Bittersweet citrus aperitif with a vibrant finish', price:10 },
+          { id:'p2', name:'Limoncello Spritz', desc:'Bright and zesty drink with lemon and herbs', price:11 },
+          { id:'p3', name:'Rosé Pour', desc:'Delicate, refreshing glass with tones of berry', price:15 },
+          { id:'p4', name:'Classic Martini', desc:'Crisp and chilled with olives and a twist of citrus', price:12 },
+          { id:'p5', name:'Garden Spritz', desc:'Light drink with notes of citrus and rosemary', price:14 },
+          { id:'p6', name:'Pinot Gris Bottle Service', desc:'Crisp white wine with fresh orchard fruit notes', price:40 }
+        ],
+        addons: []
+      },
+      desserts: {
+        color: 'plum',
+        items: [
+          { id:'d1', name:'Classic Tiramisu', desc:'Layered espresso soaked sponge with mascarpone cream and cocoa', price:7 },
+          { id:'d2', name:'Raspberry Millefeuille', desc:'Layered pastry with cream, raspberries, and a dusting of sugar', price:9 },
+          { id:'d3', name:'Berry Pavlova', desc:'Crisp meringue topped with cream, berries, and a vibrant berry drizzle', price:8 },
+          { id:'d4', name:'Strawberry Meringue Bowl', desc:'Fresh strawberries with crisp meringue, cream, and a touch of sweetness', price:11 },
+          { id:'d5', name:'Mango Almond Delight', desc:'Silky mango dome with almond flakes, cream, and delicate floral notes', price:9 },
+          { id:'d6', name:'Pavlova with Citrus Cream', desc:'Light meringue with whipped cream, citrus curd, and fresh berries', price:10 }
+        ],
+        addons: []
+      }
+    };
+
+    let currentCategory = 'appetizers';
+    let order = [];
+    let orderIdCounter = 0;
+    let modalItem = null, modalCategory = null, modalQty = 1, modalAddons = {};
+    let customerName = '';
+    let customerEmail = '';
+
+    function switchCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.category-tab').forEach(tab => {
+        const c = tab.dataset.category === cat;
+        tab.classList.toggle('active', c);
+        tab.setAttribute('aria-selected', c);
+      });
+      renderMenuGrid();
+    }
+
+    function getItemNameFromConfig(id) { const e = document.querySelector(`[data-template-id="${id}-name"]`); return e ? e.textContent : ''; }
+    function getItemDescFromConfig(id) { const e = document.querySelector(`[data-template-id="${id}-desc"]`); return e ? e.textContent : ''; }
+    function getItemPriceFromConfig(id) { const e = document.querySelector(`[data-template-id="${id}-price"]`); if(!e) return 0; return parseFloat(e.textContent.replace('$','').trim()) || 0; }
+
+    function renderMenuGrid() {
+      const grid = document.getElementById('menu-grid');
+      grid.innerHTML = '';
+      const catData = menuData[currentCategory];
+      const template = document.getElementById('menu-card-template');
+      catData.items.forEach((item, i) => {
+        const clone = template.content.cloneNode(true);
+        const article = clone.querySelector('article');
+        article.style.animationDelay = `${i * 60}ms`;
+        article.style.opacity = '0';
+        const img = clone.querySelector('img');
+        img.dataset.templateId = `${item.id}-image`;
+        const nameEl = clone.querySelector('h3');
+        nameEl.dataset.templateId = `${item.id}-name`;
+        nameEl.textContent = item.name;
+        const descEl = clone.querySelector('p');
+        descEl.dataset.templateId = `${item.id}-desc`;
+        descEl.textContent = item.desc;
+        const priceEl = clone.querySelector('span');
+        priceEl.dataset.templateId = `${item.id}-price`;
+        priceEl.textContent = `$${item.price}`;
+        const btn = clone.querySelector('.add-to-order-btn');
+        btn.setAttribute('onclick', `applyBounce(this); openModal('${currentCategory}','${item.id}')`);
+        grid.appendChild(clone);
+      });
+      lucide.createIcons();
+    }
+
+    function openModal(category, itemId) {
+      const catData = menuData[category];
+      const item = catData.items.find(i => i.id === itemId);
+      if (!item) return;
+      const cp = getItemPriceFromConfig(itemId);
+      const cn = getItemNameFromConfig(itemId);
+      const cd = getItemDescFromConfig(itemId);
+      modalItem = { ...item, price: cp > 0 ? cp : item.price, name: cn || item.name, desc: cd || item.desc };
+      modalCategory = category;
+      modalQty = 1;
+      modalAddons = {};
+      document.getElementById('modal-item-name').textContent = modalItem.name;
+      document.getElementById('modal-item-desc').textContent = modalItem.desc;
+      document.getElementById('modal-base-price').textContent = `$${modalItem.price}`;
+      document.getElementById('modal-qty').textContent = '1';
+      const addonsSection = document.getElementById('addons-section');
+      const addonsList = document.getElementById('addons-list');
+      addonsList.innerHTML = '';
+      if (catData.addons.length > 0) {
+        addonsSection.classList.remove('hidden');
+        catData.addons.forEach(addon => {
+          const label = document.createElement('label');
+          label.className = 'flex items-center gap-3 p-3 rounded-xl bg-gray-50 hover:bg-gray-100 cursor-pointer transition-colors';
+          label.innerHTML = `<input type="checkbox" class="w-4 h-4 rounded" onchange="toggleAddon('${addon.id}','${addon.name}',${addon.price},this.checked)"><span class="flex-1 font-medium text-sm" style="color:var(--ink);">${addon.name}</span><span class="font-semibold text-sm" style="color:var(--stone);">+$${addon.price}</span>`;
+          addonsList.appendChild(label);
+        });
+      } else {
+        addonsSection.classList.add('hidden');
+      }
+      updateModalTotal();
+      document.getElementById('customization-modal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('customization-modal').classList.add('hidden');
+      document.body.style.overflow = '';
+      modalItem = null;
+    }
+
+    function toggleAddon(id, name, price, checked) {
+      if (checked) modalAddons[id] = { name, price }; else delete modalAddons[id];
+      updateModalTotal();
+    }
+
+    function changeModalQty(d) {
+      modalQty = Math.max(1, modalQty + d);
+      document.getElementById('modal-qty').textContent = modalQty;
+      updateModalTotal();
+    }
+
+    function updateModalTotal() {
+      if (!modalItem) return;
+      const at = Object.values(modalAddons).reduce((s, a) => s + a.price, 0);
+      document.getElementById('modal-total').textContent = `$${((modalItem.price + at) * modalQty).toFixed(2)}`;
+    }
+
+    function confirmAddToOrder() {
+      if (!modalItem) return;
+      const newAddons = Object.values(modalAddons).map(a => ({ name: a.name, price: a.price }));
+      const addonsKey = JSON.stringify(newAddons.sort((a, b) => a.name.localeCompare(b.name)));
+      const existingItem = order.find(o => o.itemId === modalItem.id && JSON.stringify(o.addons.sort((a, b) => a.name.localeCompare(b.name))) === addonsKey);
+      if (existingItem) {
+        existingItem.qty += modalQty;
+      } else {
+        order.push({
+          orderId: ++orderIdCounter,
+          itemId: modalItem.id,
+          name: modalItem.name,
+          basePrice: modalItem.price,
+          addons: newAddons,
+          qty: modalQty,
+          category: modalCategory
+        });
+      }
+      closeModal();
+      renderOrder();
+      if (window.innerWidth < 1024) {
+        const panel = document.getElementById('order-panel-fixed');
+        const btn = document.getElementById('panel-toggle-btn');
+        panel.classList.add('panel-open');
+        btn.textContent = 'Close';
+        btn.setAttribute('aria-expanded', 'true');
+        panel.style.maxHeight = 'calc(100vh - 20px)';
+      }
+    }
+
+    function renderOrder() {
+      const container = document.getElementById('order-items-container');
+      const emptyMsg = document.getElementById('empty-order');
+      const template = document.getElementById('order-item-template');
+      const existingEls = new Map();
+      container.querySelectorAll('[data-order-id]').forEach(el => existingEls.set(parseInt(el.dataset.orderId), el));
+      const currentIds = new Set(order.map(o => o.orderId));
+      existingEls.forEach((el, id) => { if (!currentIds.has(id)) el.remove(); });
+      order.forEach(item => {
+        const itemTotal = (item.basePrice + item.addons.reduce((s, a) => s + a.price, 0)) * item.qty;
+        const addonsText = item.addons.length ? '+ ' + item.addons.map(a => a.name).join(', ') : '';
+        const catLabel = item.category === 'appetizers' ? 'Appetizer' : item.category === 'pastas' ? 'Drink' : 'Dessert';
+        const catColor = item.category === 'appetizers' ? 'coral' : item.category === 'pastas' ? 'sage' : 'plum';
+        if (existingEls.has(item.orderId)) {
+          const el = existingEls.get(item.orderId);
+          el.querySelector('.order-item-qty').textContent = item.qty;
+          el.querySelector('.order-item-price').textContent = `$${itemTotal.toFixed(2)}`;
+          el.querySelector('.order-item-addons').textContent = addonsText;
+          el.querySelector('.order-item-category').textContent = catLabel;
+          el.querySelector('.order-item-category').style.backgroundColor = `var(--${catColor}-light)`;
+          el.querySelector('.order-item-category').style.color = `var(--${catColor})`;
+        } else {
+          const clone = template.content.cloneNode(true);
+          const wrapper = clone.querySelector('div');
+          wrapper.dataset.orderId = item.orderId;
+          wrapper.querySelector('p.font-semibold').textContent = item.name;
+          wrapper.querySelector('.order-item-category').textContent = catLabel;
+          wrapper.querySelector('.order-item-category').style.backgroundColor = `var(--${catColor}-light)`;
+          wrapper.querySelector('.order-item-category').style.color = `var(--${catColor})`;
+          wrapper.querySelector('.order-item-addons').textContent = addonsText;
+          wrapper.querySelector('.order-item-qty').textContent = item.qty;
+          wrapper.querySelector('.order-item-price').textContent = `$${itemTotal.toFixed(2)}`;
+          wrapper.querySelector('.qty-minus').setAttribute('onclick', `changeOrderQty(${item.orderId},-1)`);
+          wrapper.querySelector('.qty-plus').setAttribute('onclick', `changeOrderQty(${item.orderId},1)`);
+          wrapper.querySelector('.remove-btn').setAttribute('onclick', `removeOrderItem(${item.orderId})`);
+          container.appendChild(clone);
+          lucide.createIcons();
+        }
+      });
+      emptyMsg.style.display = order.length === 0 ? 'block' : 'none';
+      const subtotal = order.reduce((s, item) => s + (item.basePrice + item.addons.reduce((a, ad) => a + ad.price, 0)) * item.qty, 0);
+      const totalCount = order.reduce((s, item) => s + item.qty, 0);
+      document.getElementById('order-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+      document.getElementById('order-count').textContent = totalCount;
+    }
+
+    function changeOrderQty(orderId, d) {
+      const item = order.find(o => o.orderId === orderId);
+      if (!item) return;
+      item.qty = Math.max(1, item.qty + d);
+      renderOrder();
+    }
+
+    function removeOrderItem(orderId) {
+      order = order.filter(o => o.orderId !== orderId);
+      renderOrder();
+    }
+
+    function toggleOrderPanel() {
+      if (window.innerWidth < 1024) {
+        const panel = document.getElementById('order-panel-fixed');
+        const btn = document.getElementById('panel-toggle-btn');
+        const isOpen = panel.classList.contains('panel-open');
+        panel.classList.toggle('panel-open', !isOpen);
+        btn.setAttribute('aria-expanded', String(!isOpen));
+        btn.textContent = isOpen ? 'View Order' : 'Close';
+        if (!isOpen) {
+          panel.style.maxHeight = 'calc(100vh - 20px)';
+        } else {
+          panel.style.maxHeight = '100px';
+        }
+      }
+    }
+
+    function scrollToCategories() {
+      const nav = document.querySelector('nav[data-template-id="category-tabs"]');
+      if (nav) nav.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function applyBounce(element) {
+      element.classList.remove('btn-click');
+      void element.offsetWidth;
+      element.classList.add('btn-click');
+    }
+
+    function submitOrder() {
+      if (order.length === 0) {
+        document.getElementById('submit-error').textContent = 'Your order is empty. Please add items before submitting.';
+        document.getElementById('submit-error').classList.remove('hidden');
+        return;
+      }
+      document.getElementById('submit-error').classList.add('hidden');
+      document.getElementById('name-input').value = '';
+      document.getElementById('email-input').value = '';
+      document.getElementById('name-error').classList.add('hidden');
+      document.getElementById('name-modal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNameModal() {
+      document.getElementById('name-modal').classList.add('hidden');
+      document.body.style.overflow = '';
+      document.getElementById('email-input').value = '';
+    }
+
+    function confirmNameAndSubmit() {
+      const nameInput = document.getElementById('name-input').value.trim();
+      const emailInput = document.getElementById('email-input').value.trim();
+      const nameError = document.getElementById('name-error');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!nameInput) {
+        nameError.textContent = 'Please enter your name';
+        nameError.classList.remove('hidden');
+        return;
+      }
+      if (!emailInput || !emailRegex.test(emailInput)) {
+        nameError.textContent = 'Please enter a valid email address';
+        nameError.classList.remove('hidden');
+        return;
+      }
+      customerName = nameInput;
+      customerEmail = emailInput;
+      closeNameModal();
+      performOrderSubmit();
+    }
+
+    async function performOrderSubmit() {
+      const errorEl = document.getElementById('submit-error');
+      const successEl = document.getElementById('submit-success');
+      const submitBtn = document.getElementById('submit-order-btn');
+      errorEl.classList.add('hidden');
+      successEl.classList.add('hidden');
+      const subtotal = order.reduce((s, item) => s + (item.basePrice + item.addons.reduce((a, ad) => a + ad.price, 0)) * item.qty, 0);
+      const timestamp = new Date().toISOString();
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.6';
+      for (const item of order) {
+        const lineTotal = (item.basePrice + item.addons.reduce((a, ad) => a + ad.price, 0)) * item.qty;
+        const catLabel = item.category === 'appetizers' ? 'Appetizer' : item.category === 'pastas' ? 'Drink' : 'Dessert';
+        const result = await window.dataSdk.create({
+          customer_name: customerName,
+          item_name: item.name,
+          category: catLabel,
+          addons: item.addons.map(a => a.name).join(', '),
+          quantity: item.qty,
+          line_total: lineTotal,
+          order_subtotal: subtotal,
+          submitted_at: timestamp,
+          customer_email: customerEmail
+        });
+        if (!result.isOk) {
+          errorEl.textContent = 'Error submitting order. Please try again.';
+          errorEl.classList.remove('hidden');
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '1';
+          return;
+        }
+      }
+      successEl.classList.remove('hidden');
+      order = [];
+      orderIdCounter = 0;
+      customerName = '';
+      customerEmail = '';
+      renderOrder();
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = '1';
+      setTimeout(() => successEl.classList.add('hidden'), 3000);
+    }
+
+    const dataHandler = { onDataChanged(data) {} };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const initResult = await window.dataSdk.init(dataHandler);
+      renderMenuGrid();
+      lucide.createIcons();
+    });
+  </script>
+ 
+</body></html>

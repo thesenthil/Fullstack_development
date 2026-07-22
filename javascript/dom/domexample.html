@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="demo">
+    Hello
+    <span style="display:none">Hidden Text</span>
+    <b>World</b>
+</div>
+
+<button onclick="showValues()">Check</button>
+
+<script>
+function showValues() {
+    let element = document.getElementById("demo");
+
+    console.log("innerHTML:");
+    console.log(element.innerHTML);
+
+    console.log("innerText:");
+    console.log(element.innerText);
+
+    console.log("textContent:");
+    console.log(element.textContent);
+}
+</script>
+
+</body>
+</html>
+
+<!-- Output
+innerHTML
+Hello
+<span style="display:none">Hidden Text</span>
+<b>World</b>
+Returns the HTML tags along with the content.
+innerText
+Hello World
+Returns only the visible text.
+Ignores hidden elements (display:none).
+textContent
+Hello Hidden Text World
+Returns all text content.
+Includes hidden text.
+Does not return HTML tags. -->

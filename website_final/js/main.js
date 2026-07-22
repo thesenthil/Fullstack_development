@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { type: 'cmd',     text: 'whoami' },
     { type: 'out',     text: 'digital-byte-student' },
     { type: 'cmd',     text: 'ls courses/' },
-    { type: 'out',     text: 'ai_ml/  mern/  mean/  java/  python/  cloud/  data_science/  digital_marketing/' },
+    { type: 'out',     text: 'ai_ml/  mern/  mean/  java/  python/  cloud/  data_science/  digital_marketing/  cyber_security/  soft_skills/' },
     { type: 'cmd',     text: 'python train_model.py --epochs 50' },
     { type: 'comment', text: 'Training... Epoch 50/50 — Accuracy: 97.4%' },
     { type: 'out',     text: '✓ Model saved to ./output/model_v2.pt' },
@@ -261,6 +261,8 @@ document.addEventListener('DOMContentLoaded', () => {
     { href: 'brochures/cloud_html.html',   name: 'DBS_Cloud_Brochure.html'       },
     { href: 'brochures/data_science.html', name: 'DBS_DataScience_Brochure.html' },
     { href: 'brochures/digital_marketing.html', name: 'DBS_DigitalMarketing_Brochure.html' },
+    { href: 'brochures/cyber_security.html',    name: 'DBS_CyberSecurity_Brochure.html'    },
+    { href: 'brochures/soft_skills.html',       name: 'DBS_SoftSkills_Brochure.html'       },
   ];
 
   if (downloadAllBtn) {

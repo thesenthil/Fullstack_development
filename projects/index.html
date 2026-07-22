@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blinkit Clone</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#f8f8f8;
+}
+
+/*================ HEADER ================*/
+
+header{
+width:100%;
+height:85px;
+background:#fff;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 40px;
+box-shadow:0 2px 8px rgba(0,0,0,.1);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.logo{
+font-size:42px;
+font-weight:bold;
+color:#f5c400;
+}
+
+.logo span{
+color:#33b249;
+}
+
+.location h3{
+font-size:24px;
+}
+
+.location p{
+font-size:14px;
+color:#555;
+margin-top:5px;
+}
+
+.search{
+width:500px;
+}
+
+.search input{
+width:100%;
+padding:14px;
+border-radius:10px;
+border:1px solid #ddd;
+font-size:16px;
+outline:none;
+}
+
+.right{
+display:flex;
+gap:30px;
+align-items:center;
+}
+
+.login{
+font-size:22px;
+cursor:pointer;
+}
+
+.cart{
+background:#e5e5e5;
+padding:14px 25px;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+
+/*================ CATEGORY ================*/
+
+.categories{
+width:95%;
+margin:30px auto;
+display:grid;
+grid-template-columns:repeat(10,1fr);
+gap:20px;
+}
+
+.category{
+background:white;
+padding:15px;
+border-radius:15px;
+text-align:center;
+transition:.3s;
+cursor:pointer;
+box-shadow:0 0 5px rgba(0,0,0,.08);
+}
+
+.category:hover{
+transform:translateY(-5px);
+}
+
+.category img{
+width:90px;
+height:90px;
+object-fit:contain;
+}
+
+.category p{
+margin-top:10px;
+font-size:17px;
+font-weight:500;
+}
+
+/*=============== SECTION TITLE ==============*/
+
+.heading{
+width:95%;
+margin:40px auto 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.heading h2{
+font-size:32px;
+}
+
+.heading a{
+text-decoration:none;
+font-size:24px;
+color:green;
+font-weight:bold;
+}
+
+/*=============== PRODUCT SCROLL ==============*/
+
+.products{
+width:95%;
+margin:auto;
+display:flex;
+overflow-x:auto;
+gap:20px;
+padding-bottom:20px;
+scroll-behavior:smooth;
+}
+
+.products::-webkit-scrollbar{
+height:8px;
+}
+
+.products::-webkit-scrollbar-thumb{
+background:#999;
+border-radius:10px;
+}
+
+/*=============== PRODUCT CARD ==============*/
+
+.card{
+min-width:240px;
+background:white;
+border-radius:12px;
+padding:15px;
+border:1px solid #ddd;
+}
+
+.card img{
+width:100%;
+height:170px;
+object-fit:contain;
+}
+
+.time{
+display:inline-block;
+background:#f2f2f2;
+padding:5px 10px;
+border-radius:6px;
+font-size:14px;
+font-weight:bold;
+}
+
+.name{
+margin-top:12px;
+font-size:22px;
+font-weight:bold;
+}
+
+.qty{
+margin-top:15px;
+color:gray;
+font-size:18px;
+}
+
+.bottom{
+margin-top:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.price{
+font-size:28px;
+font-weight:bold;
+}
+
+.add{
+padding:10px 28px;
+border:1px solid green;
+color:green;
+font-weight:bold;
+border-radius:8px;
+background:white;
+cursor:pointer;
+}
+
+.add:hover{
+background:green;
+color:white;
+}
+
+/*=============== FOOTER ==============*/
+
+footer{
+margin-top:60px;
+background:white;
+padding:50px;
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+}
+
+.footer-box{
+width:45%;
+}
+
+.footer-box h2{
+margin-bottom:25px;
+}
+
+.links{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+}
+
+.links a{
+text-decoration:none;
+color:#666;
+font-size:18px;
+}
+
+.links a:hover{
+color:green;
+}
+
+.copy{
+text-align:center;
+padding:20px;
+background:#efefef;
+font-size:18px;
+}
+
+@media(max-width:1100px){
+
+.categories{
+grid-template-columns:repeat(5,1fr);
+}
+
+.search{
+width:300px;
+}
+
+}
+
+@media(max-width:768px){
+
+header{
+flex-direction:column;
+height:auto;
+padding:20px;
+gap:20px;
+}
+
+.search{
+width:100%;
+}
+
+.categories{
+grid-template-columns:repeat(3,1fr);
+}
+
+footer{
+flex-direction:column;
+gap:40px;
+}
+
+.footer-box{
+width:100%;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+blink<span>it</span>
+</div>
+
+<div class="location">
+<h3>Delivery in 10 minutes</h3>
+<p>278, GMS Road, Mahadev Vihar 🔽</p>
+</div>
+
+<div class="search">
+<input type="text" placeholder="Search 'milk'">
+</div>
+
+<div class="right">
+<div class="login">Login</div>
+<div class="cart">🛒 My Cart</div>
+</div>
+
+</header>
+
+<!-- Categories -->
+
+<div class="categories">
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-12/paan-corner_web.png">
+<p>Paan Corner</p>
+</div>
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-2_10.png">
+<p>Dairy, Bread & Eggs</p>
+</div>
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-3_9.png">
+<p>Fruits & Vegetables</p>
+</div>
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-3_9.png">
+<p>Cold Drinks</p>
+</div>
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-5_4.png">
+<p>Snacks</p>
+</div>
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-6_5.png">
+<p>Breakfast</p>
+</div>
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-7_3.png">
+<p>Sweet Tooth</p>
+</div>
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-8_4.png">
+<p>Bakery</p>
+</div>
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2025-11/Slice-7-1_0.png">
+<p>Tea & Coffee</p>
+</div>
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2025-11/Slice-7-1_0.png">
+<p>Atta & Rice</p>
+</div>
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2025-11/Slice-7-1_0.png">
+<p>Masala</p>
+</div>
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-12.png">
+<p>Sauces</p>
+</div>
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-13.png">
+<p>Chicken</p>
+</div>
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-14.png">
+<p>Organic</p>
+</div>
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-15.png">
+<p>Baby Care</p>
+</div>
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-16.png">
+<p>Cleaning</p>
+</div>
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-17.png">
+<p>Home</p>
+</div>
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-18.png">
+<p>Personal Care</p>
+</div>
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-19.png">
+<p>Pet Care</p>
+</div>
+
+<div class="category">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/layout-engine/2022-11/Slice-20.png">
+<p>More</p>
+</div>
+
+</div>
+<!-- Dairy Section -->
+
+<div class="heading">
+    <h2>Dairy, Bread & Eggs</h2>
+    <a href="#">See all</a>
+</div>
+
+<div class="products">
+
+<div class="card">
+
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/628c97e0-5ed4-425d-a667-1d3bfa6f0bde.png">
+
+<div class="time">⏱ 10 MINS</div>
+
+<div class="name">
+Amul Gold Milk
+</div>
+
+<div class="qty">
+500 ml
+</div>
+
+<div class="bottom">
+
+<div class="price">
+₹36
+</div>
+
+<button class="add">
+ADD
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/3af56c86-9a93-4d0c-a8d5-cf38493e4120.png">
+
+<div class="time">⏱ 10 MINS</div>
+
+<div class="name">
+Amul Curd
+</div>
+
+<div class="qty">
+400 g
+</div>
+
+<div class="bottom">
+
+<div class="price">
+₹35
+</div>
+
+<button class="add">
+ADD
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/rc-upload-1781155438653-138.png">
+
+<div class="time">⏱ 10 MINS</div>
+
+<div class="name">
+Amul Butter
+</div>
+
+<div class="qty">
+100 g
+</div>
+
+<div class="bottom">
+
+<div class="price">
+₹60
+</div>
+
+<button class="add">
+ADD
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/rc-upload-1781005834326-99.png">
+
+<div class="time">⏱ 10 MINS</div>
+
+<div class="name">
+Brown Bread
+</div>
+
+<div class="qty">
+400 g
+</div>
+
+<div class="bottom">
+
+<div class="price">
+₹45
+</div>
+
+<button class="add">
+ADD
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/5ff18b5d-01c1-4abe-acb1-92976ea99077.png">
+
+<div class="time">⏱ 10 MINS</div>
+
+<div class="name">
+Cheese Slices
+</div>
+
+<div class="qty">
+200 g
+</div>
+
+<div class="bottom">
+
+<div class="price">
+₹120
+</div>
+
+<button class="add">
+ADD
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/7a1700ee-dd38-49cf-b34e-171ff84ac0e7.png">
+
+<div class="time">⏱ 10 MINS</div>
+
+<div class="name">
+Paneer
+</div>
+
+<div class="qty">
+250 g
+</div>
+
+<div class="bottom">
+
+<div class="price">
+₹95
+</div>
+
+<button class="add">
+ADD
+</button>
+
+</div>
+
+</div>
+
+</div>
+<div class="heading">
+<h2>Snacks & Munchies</h2>
+<a href="#">See all</a>
+</div>
+
+<div class="products">
+
+<div class="card">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/rc-upload-1771055515892-316.png">
+<div class="time">⏱ 10 MINS</div>
+<div class="name">Lays Chips</div>
+<div class="qty">52 g</div>
+<div class="bottom">
+<div class="price">₹20</div>
+<button class="add">ADD</button>
+</div>
+</div>
+
+<div class="card">
+<img src=" https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/rc-upload-1781075086335-194.png">
+<div class="time">⏱ 10 MINS</div>
+<div class="name">Doritos</div>
+<div class="qty">70 g</div>
+<div class="bottom">
+<div class="price">₹50</div>
+<button class="add">ADD</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/rc-upload-1780634830965-687.png">
+<div class="time">⏱ 10 MINS</div>
+<div class="name">Kurkure</div>
+<div class="qty">90 g</div>
+<div class="bottom">
+<div class="price">₹20</div>
+<button class="add">ADD</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/rc-upload-1773747390518-30.png">
+<div class="time">⏱ 10 MINS</div>
+<div class="name">Popcorn</div>
+<div class="qty">80 g</div>
+<div class="bottom">
+<div class="price">₹45</div>
+<button class="add">ADD</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=450/da/cms-assets/cms/product/rc-upload-1770009609593-107.png">
+<div class="time">⏱ 10 MINS</div>
+<div class="name">Nachos</div>
+<div class="qty">150 g</div>
+<div class="bottom">
+<div class="price">₹99</div>
+<button class="add">ADD</button>
+</div>
+</div>
+
+</div>
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="footer-box">
+
+<h2>Useful Links</h2>
+
+<div class="links">
+
+<a href="#">About</a>
+<a href="#">Careers</a>
+<a href="#">Blog</a>
+
+<a href="#">Press</a>
+<a href="#">Privacy</a>
+<a href="#">Terms</a>
+
+<a href="#">FAQs</a>
+<a href="#">Security</a>
+<a href="#">Contact</a>
+
+<a href="#">Partner</a>
+<a href="#">Franchise</a>
+<a href="#">Seller</a>
+
+<a href="#">Warehouse</a>
+<a href="#">Deliver</a>
+<a href="#">Resources</a>
+
+</div>
+
+</div>
+
+
+<div class="footer-box">
+
+<h2>Categories</h2>
+
+<div class="links">
+
+<a href="#">Vegetables & Fruits</a>
+<a href="#">Dairy & Bread</a>
+<a href="#">Cold Drinks</a>
+
+<a href="#">Bakery</a>
+<a href="#">Snacks</a>
+<a href="#">Tea & Coffee</a>
+
+<a href="#">Instant Food</a>
+<a href="#">Sauces</a>
+<a href="#">Rice & Atta</a>
+
+<a href="#">Personal Care</a>
+<a href="#">Cleaning</a>
+<a href="#">Baby Care</a>
+
+<a href="#">Pet Care</a>
+<a href="#">Pharmacy</a>
+<a href="#">Home Essentials</a>
+
+</div>
+
+</div>
+
+</footer>
+
+<div class="copy">
+
+<p>
+©️2026 Blinkit Clone | Made by Senthil
+</p>
+
+<br>
+
+<p>
+
+Download App
+
+ Android |
+ iPhone
+
+</p>
+
+</div>

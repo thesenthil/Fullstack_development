@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating Grid Animation</title>
+    <style>
+        body {
+            background-color: #050505;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(20, 22px);
+            gap: 6px;
+            padding: 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .grid-container:hover {
+            background-color: antiquewhite;
+        }
+
+        .square {
+            width: 22px;
+            height: 22px;
+            background-color: #d34220;
+            border-radius: 2px;
+            transition: transform 0.5s ease, background-color 0.3s;
+            animation: wave-rotation 3s infinite ease-in-out;
+        }
+
+        .grid-container:hover .square {
+            animation-duration: 1.5s;
+            background-color: orange;
+        }
+
+        .square:hover {
+            transform: scale(1.3) rotate(135deg) !important;
+            background-color: white !important;
+        }
+
+        @keyframes wave-rotation {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(45deg); }
+            100% { transform: rotate(-45deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container" id="grid"></div>
+
+    <script>
+        const grid = document.getElementById('grid');
+        const totalSquares = 100;
+
+        for (let i = 0; i < totalSquares; i++) {
+            const square = document.createElement('div');
+            square.className = 'square';
+            square.style.animationDelay = (i * 0.05) + 's';
+            grid.appendChild(square);
+        }
+    </script>
+</body>
+
+</body>
+</html>

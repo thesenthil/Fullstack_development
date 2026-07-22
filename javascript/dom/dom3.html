@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="main_heading">this is heading</h1>
+    <button id="btn" style="height:50px;width:100px;border-radius: 3px;">click me</button>
+    <button id="btn2" style="height:50px;width:100px;border-radius: 3px;">reset</button> 
+    
+</body>
+<script>
+    let h1=document.getElementById('main_heading');
+    h1.style.backgroundColor="red";
+    let btn=document.getElementById('btn');
+    //addEventListener syntax is addEventListener('event',()=>{code to be executed})
+    btn.addEventListener('click',(e)=>{
+        h1.style.backgroundColor="blue";
+        console.log(e);
+    })
+    let btn2=document.getElementById('btn2');
+    btn2.addEventListener('click',()=>{
+        h1.style.backgroundColor="white";
+    })  
+    </script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+</head>
+<body>
+    <div id="my_div"> this is parent div
+
+
+    </div>
+    
+</body>
+<script>
+    let body1=document.getElementsByTagName('body');
+let h1=document.createElement('h1');
+h1.innerHTML="this is my heading ";
+body1[0].append(h1);
+// let div=document.createElement('div');
+    // div.innerHTML="this is my first div through javascript";   
+    // document.body.appendChild(div);
+    let div=document.getElementById('my_div');
+    let new_div=document.createElement('div');
+    new_div.innerHTML="this is child div ";
+    //document.getElementById('my_div').appendChild(new_div);
+    div.appendChild(new_div);
+
+//update
+new_div.innerHTML="this is updated child div";
+ //remove
+ new_div.remove();
+
+     
+</script>
+</html>

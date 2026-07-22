@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Intervals</title>
+</head>
+<body>
+    <h1>INTERVALS</h1>
+
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+    <script>
+
+        const intervalIds = [];
+
+        function sayDate() {
+            console.log("Hi", Date.now());
+        }
+
+        // Har click par naya interval
+        document.getElementById("start").addEventListener("click", function () {
+
+            const id = setInterval(sayDate, 1000);
+            intervalIds.push(id);
+
+            console.log("Interval Started:", id);
+
+        });
+
+        // Sabhi intervals band
+        document.getElementById("stop").addEventListener("click", function () {
+
+            intervalIds.forEach(function(id) {
+                clearInterval(id);
+            });
+
+            intervalIds.length = 0;
+
+            console.log("All Intervals Stopped");
+
+        });
+
+    </script>
+
+</body>
+</html>
